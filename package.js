@@ -7,18 +7,27 @@ enyo.depends(
      http://buildingfirefoxos.com
 
       */
+
+    /* Styles */
     "vendor/style/headers.css",
     "vendor/style/toolbars.css",
     "vendor/style/buttons.css",
     "vendor/style/drawer.css",
     "vendor/style/buttons.css",
     "vendor/style/tabs.css",
+    "vendor/style/input_areas.css",
+    "vendor/style/progress_activity.css",
+    "vendor/style/lists.css",
+
+    /* JS */
+    "vendor/js/action_menu.js",
+    "vendor/js/seekbars.js",
+    "vendor/js/status.js",
 
     /* Icons */
     "vendor/icons/styles/action_icons.css",
     "vendor/icons/styles/media_icons.css",
     "vendor/icons/styles/comms_icons.css",
-    "vendor/icons/styles/icons.css",
 
     /* General */
     "vendor/fonts.css",
@@ -40,5 +49,11 @@ enyo.depends(
     "HeaderButton.js",
     "Button.js",
     "Drawer.js",
-    "Tabs.js"
+    "Filters.js",
+    "Tabs.js",
+    "Region.js",
+    "Spinner.js",
+    "ProgressBar.js",
+    "ActivityBar.js",
+    "List.js"
 );

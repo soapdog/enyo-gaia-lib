@@ -1,5 +1,5 @@
 enyo.kind({
-    name: "gaia.Tabs",
+    name: "gaia.Filters",
     published: {
         tabs: ""
     },
