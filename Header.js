@@ -1,77 +1,55 @@
+/**
+ * _gaia.Header_ implements the application header menu used by Firefox OS applications.
+ *
+ * Documentation for the header is available at http://buildingfirefoxos.com/building-blocks/headers.html
+ */
+
 enyo.kind({
     name: "gaia.Header",
     tag: "header",
     published: {
-        title: "",
-        buttons: "",
-        subtitle: "",
-        drawerButton: false
+        hasDrawer: false
     },
-    components: [
-        {tag: "menu", name: "menu", attributes: {type: "toolbar"}},
-        {tag: "h1", name: "headerTitle", content: "My App"}
-    ],
     create: function() {
         this.inherited(arguments);
-        this.titleChanged();
-        this.menuChanged();
-        this.subtitleChanged();
-        this.drawerButtonChanged();
+
+        //this.hasDrawerChanged();
     },
-    titleChanged: function() {
-        this.$.headerTitle.setContent(this.title);
-        this.render();
-    },
-    menuChanged: function() {
-        if (this.buttons === "") {
-            return;
+    hasDrawerChanged: function(inOldValue) {
+        if (this.hasDrawer) {
+            this.log("creating drawer buttons");
+            /*
+            Drawer code can be seen at:
+             http://buildingfirefoxos.com/building-blocks/drawer.html
+
+             It requires two <a> for the menu.
+             */
+            this.createComponents([
+                {tag: "a", attributes: {href: "#" + this.getId()}, components: [{tag: "span", classes: "icon icon-menu", content: "hide sidebar"}]},
+                {tag: "a", attributes: {href: "#" + this.container.getId()}, components: [{tag: "span", classes: "icon icon-menu", content: "show sidebar"}]}
+            ], {owner: this});
         }
 
-        this.$.menu.createComponents(this.buttons, {owner: this.$.menu});
+        this.log("end");
     },
-    subtitleChanged: function() {
-        if (this.subtitle === "") {
-            return;
-        }
+    initComponents: function() {
+        this.createChrome(this.chrome);
+        this.discoverControlParent();
+        this.log("Tentando adicionar drawer");
+        if (this.hasDrawer) {
+            this.log("creating drawer buttons");
+            /*
+             Drawer code can be seen at:
+             http://buildingfirefoxos.com/building-blocks/drawer.html
 
-        if (this.$.subtitleHeader && this.$.subtitleHeader.hasNode()) {
-            this.$.subtitleHeader.destroy();
+             It requires two <a> for the menu.
+             */
+            this.createComponents([
+                {tag: "a", attributes: {href: "#" + this.getId()}, components: [{tag: "span", classes: "icon icon-menu", content: "hide sidebar"}]},
+                {tag: "a", attributes: {href: "#" + this.container.getId()}, components: [{tag: "span", classes: "icon icon-menu", content: "show sidebar"}]}
+            ], {owner: this});
         }
-        this.createComponent({
-                tag: "header",
-                name: "subtitleHeader",
-                components: [
-                    {tag: "h2", name: "subtitleHeaderTitle", content: this.subtitle}
-                ]
-            },
-            {owner: this});
-    },
-    drawerButtonChanged: function() {
-        if (!this.drawerButton) {
-            return;
-        }
+        this.inherited(arguments);
 
-        if (this.$.drawerButton && this.$.openButton.hasNode() && this.$.closeButton.hasNode()) {
-            this.$.openButton.destroy();
-            this.$.closeButton.destroy();
-        }
-        this.log("creating left menu button with icon " + this.leftButton);
-        this.createComponents([
-                {
-                    kind: "gaia.HeaderButton",
-                    name: "openButton",
-                    target: "close",
-                    icon: "icon-menu",
-                    owner: this
-                },
-                {
-                    kind: "gaia.HeaderButton",
-                    name: "closeButton",
-                    target: this.container.getId(),
-                    icon: "icon-menu",
-                    owner: this
-                }
-            ],
-            {addBefore: this.$.menu});
     }
 });

@@ -57,5 +57,9 @@ enyo.depends(
     "Spinner.js",
     "ProgressBar.js",
     "ActivityBar.js",
-    "List.js"
+    "List.js",
+    "IconButton.js",
+    "HeaderTitle.js",
+    "HeaderSubtitle.js",
+    "HeaderMenu.js"
 );
