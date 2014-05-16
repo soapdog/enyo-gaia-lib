@@ -23,9 +23,17 @@ enyo.kind({
         this.render();
     },
     menuChanged: function() {
+        if (this.buttons === "") {
+            return;
+        }
+
         this.$.menu.createComponents(this.buttons, {owner: this.$.menu});
     },
     subtitleChanged: function() {
+        if (this.subtitle === "") {
+            return;
+        }
+
         if (this.$.subtitleHeader && this.$.subtitleHeader.hasNode()) {
             this.$.subtitleHeader.destroy();
         }
@@ -39,6 +47,10 @@ enyo.kind({
             {owner: this});
     },
     drawerButtonChanged: function() {
+        if (!this.drawerButton) {
+            return;
+        }
+
         if (this.$.drawerButton && this.$.openButton.hasNode() && this.$.closeButton.hasNode()) {
             this.$.openButton.destroy();
             this.$.closeButton.destroy();

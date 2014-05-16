@@ -14,7 +14,7 @@ enyo.kind({
     ontap: "tap"
   },
   components: [
-    {kind: "enyo.Button", classes: "action-icon delete", name: "button"}
+    {kind: "enyo.Button", classes: "action-icon", name: "button"}
   ],
   create: function() {
     this.inherited(arguments);
@@ -24,6 +24,7 @@ enyo.kind({
     this.log("Changing icon from " + inOldValue + " to " + this.icon);
     this.$.button.removeClass(inOldValue);
     this.$.button.addClass(this.icon);
+    this.render();
   },
   down: function(inSender, inEvent) {
     if (this.disabled) {

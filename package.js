@@ -28,6 +28,7 @@ enyo.depends(
     "vendor/icons/styles/action_icons.css",
     "vendor/icons/styles/media_icons.css",
     "vendor/icons/styles/comms_icons.css",
+    "vendor/style/icons.css",
 
     /* General */
     "vendor/fonts.css",
@@ -51,6 +52,7 @@ enyo.depends(
     "Drawer.js",
     "Filters.js",
     "Tabs.js",
+    "Tab.js",
     "Region.js",
     "Spinner.js",
     "ProgressBar.js",
