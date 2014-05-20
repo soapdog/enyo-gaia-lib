@@ -18,6 +18,7 @@ enyo.depends(
     "vendor/style/input_areas.css",
     "vendor/style/progress_activity.css",
     "vendor/style/lists.css",
+    "vendor/style/status.css",
 
     /* JS */
     "vendor/js/action_menu.js",
@@ -61,5 +62,6 @@ enyo.depends(
     "IconButton.js",
     "HeaderTitle.js",
     "HeaderSubtitle.js",
-    "HeaderMenu.js"
+    "HeaderMenu.js",
+    "Status.js"
 );
